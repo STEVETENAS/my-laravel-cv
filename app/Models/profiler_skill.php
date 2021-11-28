@@ -13,6 +13,7 @@ class profiler_skill extends Model
 
     protected $fillable = [
         'skill_title',
+        'skill_level',
         'skill_description',
         'profiler_info_id',
     ];

@@ -17,6 +17,7 @@ class CreateProfilerInfosTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('gender');
             $table->string('place_of_birth');
             $table->date('date_of_birth');
             $table->string('profession');
@@ -24,6 +25,7 @@ class CreateProfilerInfosTable extends Migration
             $table->tinyInteger('number_of_children')->nullable();
             $table->boolean('married')->default(false);
             $table->binary('profiler_image');
+            $table->binary('background_image');
             $table->timestampTz('deleted_at');
             $table->timestampsTz();
         });

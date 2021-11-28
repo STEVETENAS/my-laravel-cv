@@ -12,8 +12,11 @@ class profiler_resident extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'project_name',
-        'project_description',
+        'place_of_residence',
+        'city_of_residence',
+        'country_of_residence',
+        'residence_longitude',
+        'residence_latitude',
         'profiler_info_id',
     ];
 

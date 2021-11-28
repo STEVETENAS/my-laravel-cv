@@ -14,6 +14,7 @@ class profiler_info extends Model
     protected $fillable = [
         'first_name',
         'last_name',
+        'gender',
         'place_of_birth',
         'date_of_birth',
         'profession',
@@ -21,6 +22,7 @@ class profiler_info extends Model
         'number_of_children',
         'married',
         'profiler_image',
+        'background_image',
     ];
 
     protected $dateFormat = 'U';

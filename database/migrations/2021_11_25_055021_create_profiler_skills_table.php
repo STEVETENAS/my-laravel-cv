@@ -16,6 +16,7 @@ class CreateProfilerSkillsTable extends Migration
         Schema::create('profiler_skill', function (Blueprint $table) {
             $table->id();
             $table->tinyText('skill_title');
+            $table->tinyInteger('skill_level');
             $table->mediumText('skill_description');
             $table->foreignId("profiler_info_id")->constrained('profiler_infos')
                 ->onDelete('cascade')->onUpdate('cascade');
