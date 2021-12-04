@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JetBrains\PhpStorm\ArrayShape;
 
 class profiler_academicUpdate extends FormRequest
 {
@@ -11,9 +12,9 @@ class profiler_academicUpdate extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +22,16 @@ class profiler_academicUpdate extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    #[ArrayShape(['diploma_title' => "string", 'profiler_info_id' => "string", 'institution_attended' => "string", 'diploma_description' => "string"])]
+    public function rules(): array
     {
+        $id = $this->profiler_academic;
+
         return [
-            //
+            'diploma_title' => 'required|string|max:50|min:2' . $id,
+            'profiler_info_id' => 'required',
+            'institution_attended' => 'required|string|max:50|min:2',
+            'diploma_description' => 'required|string|max:300|min:5',
         ];
     }
 }

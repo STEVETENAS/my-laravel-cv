@@ -11,9 +11,9 @@ class profiler_ipStore extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,13 @@ class profiler_ipStore extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'ip_name' => 'required|string|max:50|min:2',
+            'profiler_info_id' => 'required',
+            'ip_description' => 'required|string|max:300|min:5',
+            'ip_img' => 'required|binary',
         ];
     }
 }

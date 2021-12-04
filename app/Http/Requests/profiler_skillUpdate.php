@@ -11,9 +11,9 @@ class profiler_skillUpdate extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,14 @@ class profiler_skillUpdate extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
+        $id = $this->profiler_skill;
         return [
-            //
+            'skill_title' => 'required|string|max:50|min:2' . $id,
+            'profiler_info_id' => 'required',
+            'skill_level' => 'required|int|max:100|min:1',
+            'skill_description' => 'required|string|max:300|min:2',
         ];
     }
 }

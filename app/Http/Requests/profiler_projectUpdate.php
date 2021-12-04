@@ -11,9 +11,9 @@ class profiler_projectUpdate extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,11 @@ class profiler_projectUpdate extends FormRequest
      */
     public function rules()
     {
+        $id = $this->profiler_project;
         return [
-            //
+            'project_name' => 'required|string|max:50|min:2' . $id,
+            'profiler_info_id' => 'required',
+            'project_description' => 'required|int|max:300|min:2',
         ];
     }
 }

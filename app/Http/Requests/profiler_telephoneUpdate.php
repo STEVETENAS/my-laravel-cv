@@ -11,9 +11,9 @@ class profiler_telephoneUpdate extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,13 @@ class profiler_telephoneUpdate extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
+        $id = $this->profiler_telephone;
         return [
-            //
+            'profiler_phone_number' => 'required|string|max:25|min:2' . $id,
+            'profiler_info_id' => 'required',
+            'phone_number_description' => 'required|string|max:300|min:2',
         ];
     }
 }

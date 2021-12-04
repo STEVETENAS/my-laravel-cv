@@ -11,9 +11,9 @@ class profiler_infoStore extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,23 @@ class profiler_infoStore extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'first_name' => 'required|string|max:50|min:2',
+            'last_name' => 'required|string|max:50|min:2',
+            'profession' => 'required|string|max:50|min:2',
+            'gender' => 'required|string|max:10|min:4',
+            'place_of_birth' => 'required|string|max:30|min:2',
+            'place_of_origin' => 'required|string|max:30|min:2',
+            'date_of_birth' => 'required',
+            'job_end_date' => 'required',
+            'profiler_info_id' => 'required',
+            'job_description' => 'required|string|max:300|min:5',
+            'number_of_children' => 'required|int',
+            'married' => 'required|bool',
+            'profiler_image' => 'required|binary',
+            'background_image' => 'required|binary',
         ];
     }
 }

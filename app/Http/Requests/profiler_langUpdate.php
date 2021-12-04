@@ -11,9 +11,9 @@ class profiler_langUpdate extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,13 @@ class profiler_langUpdate extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
+        $id = $this->profiler_lang;
         return [
-            //
+            'language' => 'required|string|max:50|min:2' . $id,
+            'profiler_info_id' => 'required',
+            'language_level' => 'required|int|max:10|min:1',
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JetBrains\PhpStorm\ArrayShape;
 
 class profiler_contractStore extends FormRequest
 {
@@ -11,9 +12,9 @@ class profiler_contractStore extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +22,13 @@ class profiler_contractStore extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    #[ArrayShape(['contract_type' => "string", 'profiler_info_id' => "string", 'contract_description' => "string"])] public function
+    rules(): array
     {
         return [
-            //
+            'contract_type' => 'required|string|max:50|min:2',
+            'profiler_info_id' => 'required',
+            'contract_description' => 'required|string|max:300|min:5',
         ];
     }
 }

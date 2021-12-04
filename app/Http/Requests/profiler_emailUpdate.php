@@ -11,9 +11,9 @@ class profiler_emailUpdate extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,13 @@ class profiler_emailUpdate extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
+        $id = $this->profiler_email;
         return [
-            //
+            'profiler_email' => 'required|string|max:50|min:2' . $id,
+            'profiler_info_id' => 'required',
+            'email_description' => 'required|string|max:300|min:5',
         ];
     }
 }

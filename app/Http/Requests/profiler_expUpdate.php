@@ -11,9 +11,9 @@ class profiler_expUpdate extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,17 @@ class profiler_expUpdate extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
+        $id = $this->profiler_exp;
         return [
-            //
+            'job_title' => 'required|string|max:50|min:2' . $id,
+            'company_name' => 'required|string|max:50|min:2',
+            'company_website' => 'required|string|max:200|min:2',
+            'job_start_date' => 'required',
+            'job_end_date' => 'required',
+            'profiler_info_id' => 'required',
+            'job_description' => 'required|string|max:300|min:5',
         ];
     }
 }

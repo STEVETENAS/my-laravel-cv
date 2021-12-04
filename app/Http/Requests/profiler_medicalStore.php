@@ -11,9 +11,9 @@ class profiler_medicalStore extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,12 @@ class profiler_medicalStore extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'medical_status' => 'required|string|max:50|min:2',
+            'profiler_info_id' => 'required',
+            'medical_description' => 'required|int|max:300|min:2',
         ];
     }
 }

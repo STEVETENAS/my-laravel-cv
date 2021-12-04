@@ -11,9 +11,9 @@ class profiler_residentStore extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,15 @@ class profiler_residentStore extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'place_of_residence' => 'required|string|max:50|min:2',
+            'profiler_info_id' => 'required',
+            'city_of_residence' => 'required|string|max:50|min:2',
+            'country_of_residence' => 'required|string|max:50|min:2',
+            'residence_longitude' => 'required|double',
+            'residence_latitude' => 'required|double',
         ];
     }
 }
