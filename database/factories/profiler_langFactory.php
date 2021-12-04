@@ -14,12 +14,12 @@ class profiler_langFactory extends Factory
      */
     public function definition(): array
     {
-        $profilerIDs = DB::table('profiler_info')->pluck('id')->toArray();
+        $profilerIDs = DB::table('profiler_infos')->pluck('id')->toArray();
 
         return [
             'language' => $this->faker->languageCode,
-            'language_level' => $this->faker->randomNumber(5),
-            'profiler_info_id' => $this->faker->randomElement($profilerIDs),
+            'language_level' => $this->faker->numberBetween(0, 15),
+            'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }
 }

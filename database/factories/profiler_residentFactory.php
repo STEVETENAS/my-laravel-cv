@@ -14,7 +14,7 @@ class profiler_residentFactory extends Factory
      */
     public function definition(): array
     {
-        $profilerIDs = DB::table('profiler_info')->pluck('id')->toArray();
+        $profilerIDs = DB::table('profiler_infos')->pluck('id')->toArray();
 
         return [
             'place_of_residence' => $this->faker->streetName,
@@ -22,7 +22,7 @@ class profiler_residentFactory extends Factory
             'country_of_residence' => $this->faker->country,
             'residence_longitude' => $this->faker->longitude,
             'residence_latitude' => $this->faker->latitude,
-            'profiler_info_id' => $this->faker->randomElement($profilerIDs),
+            'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }
 }

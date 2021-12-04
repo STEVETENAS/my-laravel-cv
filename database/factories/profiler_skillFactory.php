@@ -14,13 +14,13 @@ class profiler_skillFactory extends Factory
      */
     public function definition(): array
     {
-        $profilerIDs = DB::table('profiler_info')->pluck('id')->toArray();
+        $profilerIDs = DB::table('profiler_infos')->pluck('id')->toArray();
 
         return [
             'skill_title' => $this->faker->name,
             'skill_level' => $this->faker->numberBetween(50, 100),
             'skill_description' => $this->faker->realText(300),
-            'profiler_info_id' => $this->faker->randomElement($profilerIDs),
+            'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }
 }

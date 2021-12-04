@@ -20,8 +20,7 @@ class CreateProfilerResidentsTable extends Migration
             $table->string('country_of_residence');
             $table->double('residence_longitude');
             $table->double('residence_latitude');
-            $table->foreignId("profiler_info_id")->constrained('profiler_infos')
-                ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId("profiler_infos_id");
             $table->timestampTz('deleted_at');
             $table->timestampsTz();
         });

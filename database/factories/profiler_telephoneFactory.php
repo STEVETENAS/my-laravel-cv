@@ -14,12 +14,12 @@ class profiler_telephoneFactory extends Factory
      */
     public function definition(): array
     {
-        $profilerIDs = DB::table('profiler_info')->pluck('id')->toArray();
+        $profilerIDs = DB::table('profiler_infos')->pluck('id')->toArray();
 
         return [
             'profiler_phone_number' => $this->faker->phoneNumber,
-            'phone_number_description' => $this->faker->realText(300),
-            'profiler_info_id' => $this->faker->randomElement($profilerIDs),
+            'phone_number_description' => $this->faker->realText(100),
+            'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }
 }

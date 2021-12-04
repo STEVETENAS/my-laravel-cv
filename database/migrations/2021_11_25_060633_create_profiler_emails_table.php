@@ -17,8 +17,7 @@ class CreateProfilerEmailsTable extends Migration
             $table->id();
             $table->mediumText('profiler_email');
             $table->mediumText('email_description');
-            $table->foreignId("profiler_info_id")->constrained('profiler_infos')
-                ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId("profiler_infos_id");
             $table->timestampTz('deleted_at');
             $table->timestampsTz();
         });

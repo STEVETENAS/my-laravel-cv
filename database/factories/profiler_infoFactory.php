@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\DB;
 
 class profiler_infoFactory extends Factory
 {
@@ -14,7 +13,6 @@ class profiler_infoFactory extends Factory
      */
     public function definition(): array
     {
-        $profilerIDs = DB::table('profiler_info')->pluck('id')->toArray();
         $gender = $this->faker->randomElement(['male', 'female']);
 
         return [
@@ -25,11 +23,10 @@ class profiler_infoFactory extends Factory
             'date_of_birth' => $this->faker->date,
             'profession' => $this->faker->jobTitle,
             'place_of_origin' => $this->faker->city,
-            'number_of_children' => $this->faker->randomNumber(5),
+            'number_of_children' => $this->faker->randomNumber(1),
             'married' => $this->faker->boolean,
             'profiler_image' => $this->faker->image('public/storage/images/profile_image', 640, 480, null, false),
             'background_image' => $this->faker->image('public/storage/images/bg_image', 640, 480, null, false),
-            'profiler_info_id' => $this->faker->randomElement($profilerIDs),
         ];
     }
 }

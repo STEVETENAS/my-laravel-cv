@@ -15,10 +15,9 @@ class CreateProfilerTelephonesTable extends Migration
     {
         Schema::create('profiler_telephones', function (Blueprint $table) {
             $table->id();
-            $table->double('profiler_phone_number');
+            $table->tinyText('profiler_phone_number');
             $table->tinyText('phone_number_description');
-            $table->foreignId("profiler_info_id")->constrained('profiler_infos')
-                ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId("profiler_infos_id");
             $table->timestampTz('deleted_at');
             $table->timestampsTz();
         });

@@ -14,12 +14,12 @@ class profiler_projectFactory extends Factory
      */
     public function definition(): array
     {
-        $profilerIDs = DB::table('profiler_info')->pluck('id')->toArray();
+        $profilerIDs = DB::table('profiler_infos')->pluck('id')->toArray();
 
         return [
             'project_name' => $this->faker->name,
             'project_description' => $this->faker->realText(300),
-            'profiler_info_id' => $this->faker->randomElement($profilerIDs),
+            'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }
 }

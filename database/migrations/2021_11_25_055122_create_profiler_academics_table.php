@@ -18,8 +18,7 @@ class CreateProfilerAcademicsTable extends Migration
             $table->mediumText('diploma_title');
             $table->mediumText('diploma_description');
             $table->mediumText('institution_attended');
-            $table->foreignId("profiler_info_id")->constrained('profiler_infos')
-                ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId("profiler_infos_id");
             $table->timestampTz('deleted_at');
             $table->timestampsTz();
         });

@@ -14,7 +14,7 @@ class profiler_expFactory extends Factory
      */
     public function definition(): array
     {
-        $profilerIDs = DB::table('profiler_info')->pluck('id')->toArray();
+        $profilerIDs = DB::table('profiler_infos')->pluck('id')->toArray();
 
         return [
             'job_title' => $this->faker->jobTitle,
@@ -23,7 +23,7 @@ class profiler_expFactory extends Factory
             'company_website' => $this->faker->domainName,
             'job_start_date' => $this->faker->date,
             'job_end_date' => $this->faker->date,
-            'profiler_info_id' => $this->faker->randomElement($profilerIDs),
+            'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }
 }

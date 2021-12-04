@@ -25,7 +25,7 @@ class profiler_info extends Model
         'background_image',
     ];
 
-    protected $dateFormat = 'U';
+//    protected $dateFormat = 'U';
 
     protected $casts = [
         'created_at' => 'datetime:U',

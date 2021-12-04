@@ -18,7 +18,6 @@ class profiler_skill extends Model
         'profiler_info_id',
     ];
 
-    protected $dateFormat = 'U';
 
     protected $casts = [
         'created_at' => 'datetime:U',

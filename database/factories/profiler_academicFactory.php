@@ -14,13 +14,13 @@ class profiler_academicFactory extends Factory
      */
     public function definition(): array
     {
-        $profilerIDs = DB::table('profiler_info')->pluck('id')->toArray();
+        $profilerIDs = DB::table('profiler_infos')->pluck('id')->toArray();
 
         return [
             'diploma_title' => $this->faker->name,
-            'diploma_description' => $this->faker->realText(300),
+            'diploma_description' => $this->faker->text(100),
             'institution_attended' => $this->faker->name('male'),
-            'profiler_info_id' => $this->faker->randomElement($profilerIDs),
+            'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }
 }
