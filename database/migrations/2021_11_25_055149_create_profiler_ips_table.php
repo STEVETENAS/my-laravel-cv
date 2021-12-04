@@ -19,7 +19,7 @@ class CreateProfilerIpsTable extends Migration
             $table->mediumText('ip_description');
             $table->binary('ip_img');
             $table->foreignId("profiler_infos_id");
-            $table->timestampTz('deleted_at');
+            $table->timestampTz('deleted_at')->nullable();
             $table->timestampsTz();
         });
     }

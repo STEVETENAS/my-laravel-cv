@@ -18,7 +18,7 @@ class CreateProfilerTelephonesTable extends Migration
             $table->tinyText('profiler_phone_number');
             $table->tinyText('phone_number_description');
             $table->foreignId("profiler_infos_id");
-            $table->timestampTz('deleted_at');
+            $table->timestampTz('deleted_at')->nullable();
             $table->timestampsTz();
         });
     }

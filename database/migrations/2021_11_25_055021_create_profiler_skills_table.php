@@ -19,7 +19,7 @@ class CreateProfilerSkillsTable extends Migration
             $table->tinyInteger('skill_level');
             $table->mediumText('skill_description');
             $table->foreignId("profiler_infos_id");
-            $table->timestampTz('deleted_at');
+            $table->timestampTz('deleted_at')->nullable();
             $table->timestampsTz();
         });
     }

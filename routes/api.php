@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\profilerAcademicController;
+use App\Http\Controllers\ProfilerAcademicController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('add', [profilerAcademicController::class, 'store']);
-Route::get('get', [profilerAcademicController::class, 'index']);
+Route::post('add', [ProfilerAcademicController::class, 'store']);
+Route::get('get', [ProfilerAcademicController::class, 'index']);

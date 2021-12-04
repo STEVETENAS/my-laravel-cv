@@ -18,7 +18,7 @@ class CreateProfilerEmailsTable extends Migration
             $table->mediumText('profiler_email');
             $table->mediumText('email_description');
             $table->foreignId("profiler_infos_id");
-            $table->timestampTz('deleted_at');
+            $table->timestampTz('deleted_at')->nullable();
             $table->timestampsTz();
         });
     }

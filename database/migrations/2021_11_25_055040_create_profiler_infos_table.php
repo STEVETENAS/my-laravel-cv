@@ -26,7 +26,7 @@ class CreateProfilerInfosTable extends Migration
             $table->boolean('married')->default(false);
             $table->binary('profiler_image');
             $table->binary('background_image');
-            $table->timestampTz('deleted_at');
+            $table->timestampTz('deleted_at')->nullable();
             $table->timestampsTz();
         });
     }
