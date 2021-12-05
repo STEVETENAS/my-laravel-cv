@@ -26,7 +26,7 @@ class profiler_telephoneUpdate extends FormRequest
         $id = $this->profiler_telephone;
         return [
             'profiler_phone_number' => 'required|string|max:25|min:2' . $id,
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'phone_number_description' => 'required|string|max:300|min:2',
         ];
     }

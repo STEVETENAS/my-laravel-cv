@@ -15,7 +15,7 @@ class profiler_ip extends Model
         'ip_name',
         'ip_description',
         'ip_img',
-        'profiler_info_id',
+        'profiler_infos_id',
     ];
 
 
@@ -27,6 +27,6 @@ class profiler_ip extends Model
 
     public function profiler_ips(): BelongsTo
     {
-        return $this->belongsTo(profiler_info::class, 'profiler_info_id');
+        return $this->belongsTo(profiler_info::class, 'profiler_infos_id');
     }
 }

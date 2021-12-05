@@ -26,7 +26,7 @@ class profiler_projectUpdate extends FormRequest
         $id = $this->profiler_project;
         return [
             'project_name' => 'required|string|max:50|min:2' . $id,
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'project_description' => 'required|int|max:300|min:2',
         ];
     }

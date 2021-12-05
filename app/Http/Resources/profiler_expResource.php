@@ -16,6 +16,8 @@ class profiler_expResource extends JsonResource
      */
     public function toArray($request): array
     {
+        $profiler = profiler_info::query()->where('id', '=', $this->profiler_infos_id)->get();
+
         return [
             'id' => $this->id,
             'job_title' => $this->job_title,
@@ -24,7 +26,7 @@ class profiler_expResource extends JsonResource
             'company_website' => $this->company_website,
             'job_start_date' => $this->job_start_date,
             'job_end_date' => $this->job_end_date,
-            'profiler_info' => profiler_info::collection($this->profiler_info_id),
+            'profiler_info' => $profiler,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

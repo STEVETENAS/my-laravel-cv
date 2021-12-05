@@ -17,7 +17,7 @@ class profiler_resident extends Model
         'country_of_residence',
         'residence_longitude',
         'residence_latitude',
-        'profiler_info_id',
+        'profiler_infos_id',
     ];
 
     protected $casts = [
@@ -28,6 +28,6 @@ class profiler_resident extends Model
 
     public function profiler_residents(): BelongsTo
     {
-        return $this->belongsTo(profiler_info::class, 'profiler_info_id');
+        return $this->belongsTo(profiler_info::class, 'profiler_infos_id');
     }
 }

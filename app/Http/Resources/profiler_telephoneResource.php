@@ -20,7 +20,7 @@ class profiler_telephoneResource extends JsonResource
             'id' => $this->id,
             'profiler_phone_number' => $this->profiler_phone_number,
             'phone_number_description' => $this->phone_number_description,
-            'profiler_info' => profiler_info::collection($this->profiler_info_id),
+            'profiler_info' => profiler_info::query()->where('id', '=', $this->profiler_infos_id)->get(),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

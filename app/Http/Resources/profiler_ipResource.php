@@ -21,7 +21,7 @@ class profiler_ipResource extends JsonResource
             'ip_name' => $this->ip_name,
             'ip_description' => $this->ip_description,
             'ip_img' => $this->ip_img,
-            'profiler_info' => profiler_info::collection($this->profiler_info_id),
+            'profiler_info' => profiler_info::query()->where('id', '=', $this->profiler_infos_id)->get(),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

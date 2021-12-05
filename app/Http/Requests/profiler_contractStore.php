@@ -22,12 +22,12 @@ class profiler_contractStore extends FormRequest
      *
      * @return array
      */
-    #[ArrayShape(['contract_type' => "string", 'profiler_info_id' => "string", 'contract_description' => "string"])] public function
+    #[ArrayShape(['contract_type' => "string", 'profiler_infos_id' => "string", 'contract_description' => "string"])] public function
     rules(): array
     {
         return [
             'contract_type' => 'required|string|max:50|min:2',
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'contract_description' => 'required|string|max:300|min:5',
         ];
     }

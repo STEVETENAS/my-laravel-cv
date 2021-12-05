@@ -22,13 +22,13 @@ class profiler_contractUpdate extends FormRequest
      *
      * @return array
      */
-    #[ArrayShape(['contract_type' => "string", 'profiler_info_id' => "string", 'contract_description' => "string"])]
+    #[ArrayShape(['contract_type' => "string", 'profiler_infos_id' => "string", 'contract_description' => "string"])]
     public function rules(): array
     {
         $id = $this->profiler_contract;
         return [
             'contract_type' => 'required|string|max:50|min:2' . $id,
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'contract_description' => 'required|string|max:300|min:5',
         ];
     }

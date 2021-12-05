@@ -25,7 +25,7 @@ class profiler_langStore extends FormRequest
     {
         return [
             'language' => 'required|string|max:50|min:2',
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'language_level' => 'required|int|max:10|min:1',
         ];
     }

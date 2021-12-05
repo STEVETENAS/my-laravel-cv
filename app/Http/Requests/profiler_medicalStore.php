@@ -25,7 +25,7 @@ class profiler_medicalStore extends FormRequest
     {
         return [
             'medical_status' => 'required|string|max:50|min:2',
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'medical_description' => 'required|int|max:300|min:2',
         ];
     }

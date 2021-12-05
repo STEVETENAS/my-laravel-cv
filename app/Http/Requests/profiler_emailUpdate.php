@@ -26,7 +26,7 @@ class profiler_emailUpdate extends FormRequest
         $id = $this->profiler_email;
         return [
             'profiler_email' => 'required|string|max:50|min:2' . $id,
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'email_description' => 'required|string|max:300|min:5',
         ];
     }

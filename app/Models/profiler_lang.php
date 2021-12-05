@@ -14,7 +14,7 @@ class profiler_lang extends Model
     protected $fillable = [
         'language',
         'language_level',
-        'profiler_info_id',
+        'profiler_infos_id',
     ];
 
 
@@ -26,6 +26,6 @@ class profiler_lang extends Model
 
     public function profiler_langs(): BelongsTo
     {
-        return $this->belongsTo(profiler_info::class, 'profiler_info_id');
+        return $this->belongsTo(profiler_info::class, 'profiler_infos_id');
     }
 }

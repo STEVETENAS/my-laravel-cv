@@ -25,7 +25,7 @@ class profiler_residentStore extends FormRequest
     {
         return [
             'place_of_residence' => 'required|string|max:50|min:2',
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'city_of_residence' => 'required|string|max:50|min:2',
             'country_of_residence' => 'required|string|max:50|min:2',
             'residence_longitude' => 'required|double',

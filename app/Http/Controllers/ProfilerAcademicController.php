@@ -9,6 +9,7 @@ use App\Models\profiler_academic;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use JetBrains\PhpStorm\ArrayShape;
 use Mosquitto\Exception;
 
 class ProfilerAcademicController extends Controller
@@ -21,21 +22,13 @@ class ProfilerAcademicController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-//        $search = $request->input();
-//
-//        $relations = ['profiler_academics'];
-//        $academic = profiler_academic::with($relations);
-//
-//        return Method::MethodUse($search,$academic);
-
         $query = profiler_academic::query();
         $size = $request->query('size');
-        $academic = $query->get();
+        $academics = $query->get();
         if ($size) {
-            $academic = $query->paginate($size);
+            $academics = $query->paginate($size);
         }
-        return profiler_academicResource::collection($academic);
-
+        return profiler_academicResource::collection($academics);
     }
 
     /**
@@ -58,9 +51,9 @@ class ProfilerAcademicController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return JsonResponse
+     * @return JsonResponse|profiler_academicResource
      */
-    public function show($id): JsonResponse
+    public function show($id): JsonResponse|profiler_academicResource
     {
         $academic = profiler_academic::find($id);
         if (!$academic) {
@@ -94,6 +87,7 @@ class ProfilerAcademicController extends Controller
      * @return array
      * @throws Exception
      */
+    #[ArrayShape(['data' => "mixed"])]
     public function destroy($id): array
     {
         $academic = profiler_academic::find($id);

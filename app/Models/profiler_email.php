@@ -14,7 +14,7 @@ class profiler_email extends Model
     protected $fillable = [
         'profiler_email',
         'email_description',
-        'profiler_info_id',
+        'profiler_infos_id',
     ];
 
 
@@ -26,6 +26,6 @@ class profiler_email extends Model
 
     public function profiler_emails(): BelongsTo
     {
-        return $this->belongsTo(profiler_info::class, 'profiler_info_id');
+        return $this->belongsTo(profiler_info::class, 'profiler_infos_id');
     }
 }

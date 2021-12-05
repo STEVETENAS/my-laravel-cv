@@ -18,7 +18,7 @@ class profiler_exp extends Model
         'company_website',
         'job_start_date',
         'job_end_date',
-        'profiler_info_id',
+        'profiler_infos_id',
     ];
 
 
@@ -30,6 +30,6 @@ class profiler_exp extends Model
 
     public function profiler_exps(): BelongsTo
     {
-        return $this->belongsTo(profiler_info::class, 'profiler_info_id');
+        return $this->belongsTo(profiler_info::class, 'profiler_infos_id');
     }
 }

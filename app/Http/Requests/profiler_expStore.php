@@ -28,8 +28,8 @@ class profiler_expStore extends FormRequest
             'company_name' => 'required|string|max:50|min:2',
             'company_website' => 'required|string|max:200|min:2',
             'job_start_date' => 'required',
-            'job_end_date' => 'required',
-            'profiler_info_id' => 'required',
+            'job_end_date' => 'required|after:job_start_date',
+            'profiler_infos_id' => 'required',
             'job_description' => 'required|string|max:300|min:5',
         ];
     }

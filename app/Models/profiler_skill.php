@@ -15,7 +15,7 @@ class profiler_skill extends Model
         'skill_title',
         'skill_level',
         'skill_description',
-        'profiler_info_id',
+        'profiler_infos_id',
     ];
 
 
@@ -27,6 +27,6 @@ class profiler_skill extends Model
 
     public function profiler_skills(): BelongsTo
     {
-        return $this->belongsTo(profiler_info::class, 'profiler_info_id');
+        return $this->belongsTo(profiler_info::class, 'profiler_infos_id');
     }
 }

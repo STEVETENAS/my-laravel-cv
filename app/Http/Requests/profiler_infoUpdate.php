@@ -33,7 +33,7 @@ class profiler_infoUpdate extends FormRequest
             'place_of_origin' => 'required|string|max:30|min:2',
             'date_of_birth' => 'required',
             'job_end_date' => 'required',
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'job_description' => 'required|string|max:300|min:5',
             'number_of_children' => 'required|int',
             'married' => 'required|bool',

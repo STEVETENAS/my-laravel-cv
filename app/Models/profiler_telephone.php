@@ -14,7 +14,7 @@ class profiler_telephone extends Model
     protected $fillable = [
         'profiler_phone_number',
         'phone_number_description',
-        'profiler_info_id',
+        'profiler_infos_id',
     ];
 
 
@@ -26,6 +26,6 @@ class profiler_telephone extends Model
 
     public function profiler_telephones(): BelongsTo
     {
-        return $this->belongsTo(profiler_info::class, 'profiler_info_id');
+        return $this->belongsTo(profiler_info::class, 'profiler_infos_id');
     }
 }

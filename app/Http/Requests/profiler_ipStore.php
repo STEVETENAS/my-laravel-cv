@@ -25,7 +25,7 @@ class profiler_ipStore extends FormRequest
     {
         return [
             'ip_name' => 'required|string|max:50|min:2',
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'ip_description' => 'required|string|max:300|min:5',
             'ip_img' => 'required|binary',
         ];

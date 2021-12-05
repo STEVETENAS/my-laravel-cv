@@ -26,7 +26,7 @@ class profiler_medicalUpdate extends FormRequest
         $id = $this->profiler_medical;
         return [
             'medical_status' => 'required|string|max:50|min:2' . $id,
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'medical_description' => 'required|int|max:300|min:2',
         ];
     }

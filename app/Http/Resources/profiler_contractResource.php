@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Models\profiler_info;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use JetBrains\PhpStorm\ArrayShape;
 
 class profiler_contractResource extends JsonResource
 {
@@ -14,13 +15,15 @@ class profiler_contractResource extends JsonResource
      * @param Request $request
      * @return array
      */
+    #[ArrayShape(['id' => "mixed", 'contract_type' => "mixed", 'contract_description' => "mixed", 'profiler_info' => "\Illuminate\Http\Resources\Json\AnonymousResourceCollection", 'created_at' => "mixed", 'updated_at' => "mixed"])]
     public function toArray($request): array
     {
+        $profiler = profiler_info::query()->where('id', '=', $this->profiler_infos_id)->get();
         return [
             'id' => $this->id,
             'contract_type' => $this->contract_type,
             'contract_description' => $this->contract_description,
-            'profiler_info' => profiler_info::collection($this->profiler_info_id),
+            'profiler_info' => $profiler,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

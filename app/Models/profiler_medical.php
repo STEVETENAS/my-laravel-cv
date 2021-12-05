@@ -14,7 +14,7 @@ class profiler_medical extends Model
     protected $fillable = [
         'medical_status',
         'medical_description',
-        'profiler_info_id',
+        'profiler_infos_id',
     ];
 
 
@@ -26,6 +26,6 @@ class profiler_medical extends Model
 
     public function profiler_medicals(): BelongsTo
     {
-        return $this->belongsTo(profiler_info::class, 'profiler_info_id');
+        return $this->belongsTo(profiler_info::class, 'profiler_infos_id');
     }
 }

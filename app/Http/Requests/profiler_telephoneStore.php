@@ -25,7 +25,7 @@ class profiler_telephoneStore extends FormRequest
     {
         return [
             'profiler_phone_number' => 'required|string|max:25|min:2',
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'phone_number_description' => 'required|string|max:300|min:2',
         ];
     }

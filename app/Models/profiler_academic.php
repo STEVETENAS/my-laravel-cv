@@ -16,7 +16,7 @@ class profiler_academic extends Model
         'diploma_title',
         'diploma_description',
         'institution_attended',
-        'profiler_info_id'
+        'profiler_infos_id'
     ];
 
 
@@ -28,6 +28,6 @@ class profiler_academic extends Model
 
     public function profiler_academics(): BelongsTo
     {
-        return $this->belongsTo(profiler_info::class, 'profiler_info_id');
+        return $this->belongsTo(profiler_info::class, 'profiler_infos_id');
     }
 }

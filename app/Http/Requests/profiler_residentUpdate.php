@@ -26,7 +26,7 @@ class profiler_residentUpdate extends FormRequest
         $id = $this->profiler_resident;
         return [
             'place_of_residence' => 'required|string|max:50|min:2' . $id,
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'city_of_residence' => 'required|string|max:50|min:2',
             'country_of_residence' => 'required|string|max:50|min:2',
             'residence_longitude' => 'required|double',

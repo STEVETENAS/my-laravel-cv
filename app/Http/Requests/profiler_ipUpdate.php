@@ -26,7 +26,7 @@ class profiler_ipUpdate extends FormRequest
         $id = $this->profiler_ip;
         return [
             'ip_name' => 'required|string|max:50|min:2' . $id,
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'ip_description' => 'required|string|max:300|min:5',
             'ip_img' => 'required|binary',
         ];

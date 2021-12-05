@@ -26,7 +26,7 @@ class profiler_skillUpdate extends FormRequest
         $id = $this->profiler_skill;
         return [
             'skill_title' => 'required|string|max:50|min:2' . $id,
-            'profiler_info_id' => 'required',
+            'profiler_infos_id' => 'required',
             'skill_level' => 'required|int|max:100|min:1',
             'skill_description' => 'required|string|max:300|min:2',
         ];

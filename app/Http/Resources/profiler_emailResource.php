@@ -16,11 +16,13 @@ class profiler_emailResource extends JsonResource
      */
     public function toArray($request): array
     {
+        $profiler = profiler_info::query()->where('id', '=', $this->profiler_infos_id)->get();
+
         return [
             'id' => $this->id,
             'profiler_email' => $this->profiler_email,
             'email_description' => $this->email_description,
-            'profiler_info' => profiler_info::collection($this->profiler_info_id),
+            'profiler_info' => $profiler,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
