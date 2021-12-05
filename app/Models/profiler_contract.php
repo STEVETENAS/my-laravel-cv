@@ -24,7 +24,7 @@ class profiler_contract extends Model
         'deleted_at' => 'datetime:U',
     ];
 
-    public function profiler_contracts(): BelongsTo
+    public function profiler_infos(): BelongsTo
     {
         return $this->belongsTo(profiler_info::class, 'profiler_infos_id');
     }

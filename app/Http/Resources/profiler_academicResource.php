@@ -24,7 +24,7 @@ class profiler_academicResource extends JsonResource
             'diploma_title' => $this->diploma_title,
             'diploma_description' => $this->diploma_description,
             'institution_attended' => $this->institution_attended,
-            'profiler_info' => profiler_info::query()->where('id', '=', $this->profiler_infos_id)->get(),
+            'profiler_info' => profiler_infoResource::collection($this->profiler_infos_id),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

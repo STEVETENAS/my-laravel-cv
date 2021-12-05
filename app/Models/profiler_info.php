@@ -33,57 +33,57 @@ class profiler_info extends Model
         'deleted_at' => 'datetime:U',
     ];
 
-    public function profiler_academics(): HasMany
+    public function profiler_academic(): HasMany
     {
         return $this->hasMany(profiler_academic::class);
     }
 
-    public function profiler_contracts(): HasMany
+    public function profiler_contract(): HasMany
     {
         return $this->hasMany(profiler_contract::class);
     }
 
-    public function profiler_emails(): HasMany
+    public function profiler_email(): HasMany
     {
         return $this->hasMany(profiler_email::class);
     }
 
-    public function profiler_exps(): HasMany
+    public function profiler_exp(): HasMany
     {
         return $this->hasMany(profiler_exp::class);
     }
 
-    public function profiler_ips(): HasMany
+    public function profiler_ip(): HasMany
     {
         return $this->hasMany(profiler_ip::class);
     }
 
-    public function profiler_langs(): HasMany
+    public function profiler_lang(): HasMany
     {
         return $this->hasMany(profiler_lang::class);
     }
 
-    public function profiler_medicals(): HasMany
+    public function profiler_medical(): HasMany
     {
         return $this->hasMany(profiler_medical::class);
     }
 
-    public function profiler_projects(): HasMany
+    public function profiler_project(): HasMany
     {
         return $this->hasMany(profiler_project::class);
     }
 
-    public function profiler_residents(): HasMany
+    public function profiler_resident(): HasMany
     {
         return $this->hasMany(profiler_resident::class);
     }
 
-    public function profiler_skills(): HasMany
+    public function profiler_skill(): HasMany
     {
         return $this->hasMany(profiler_skill::class);
     }
 
-    public function profiler_telephones(): HasMany
+    public function profiler_telephone(): HasMany
     {
         return $this->hasMany(profiler_telephone::class);
     }

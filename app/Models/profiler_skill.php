@@ -25,7 +25,7 @@ class profiler_skill extends Model
         'deleted_at' => 'datetime:U',
     ];
 
-    public function profiler_skills(): BelongsTo
+    public function profiler_infos(): BelongsTo
     {
         return $this->belongsTo(profiler_info::class, 'profiler_infos_id');
     }
