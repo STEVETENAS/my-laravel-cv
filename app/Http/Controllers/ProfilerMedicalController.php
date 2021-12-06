@@ -59,7 +59,7 @@ class ProfilerMedicalController extends Controller
         if (!$medical) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profilerMedicalResource($medical);
+        return profilerMedicalResource::make($medical);
     }
 
     /**

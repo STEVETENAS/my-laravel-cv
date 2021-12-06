@@ -59,7 +59,7 @@ class ProfilerContractController extends Controller
         if (!$contract) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profilerContractResource($contract);
+        return profilerContractResource::make($contract);
     }
 
     /**

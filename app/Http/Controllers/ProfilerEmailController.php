@@ -60,7 +60,7 @@ class ProfilerEmailController extends Controller
         if (!$email) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profilerEmailResource($email);
+        return profilerEmailResource::make($email);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\profilerInfoIDRule;
 use Illuminate\Foundation\Http\FormRequest;
 use JetBrains\PhpStorm\ArrayShape;
 
@@ -28,10 +29,9 @@ class profilerAcademicStore extends FormRequest
     {
         return [
             'diploma_title' => 'required|string|max:50|min:2',
-            'profiler_infos_id' => 'required',
+            'profiler_infos_id' => ['required', 'int', new profilerInfoIDRule(),],
             'institution_attended' => 'required|string|max:50|min:2',
             'diploma_description' => 'required|string|max:300|min:5',
         ];
     }
-
 }

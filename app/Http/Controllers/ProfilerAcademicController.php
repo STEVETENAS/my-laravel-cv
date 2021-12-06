@@ -8,6 +8,7 @@ use App\Http\Resources\profilerAcademicResource;
 use App\Models\profilerAcademic;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use JetBrains\PhpStorm\ArrayShape;
 use Mosquitto\Exception;
 
@@ -17,18 +18,17 @@ class ProfilerAcademicController extends Controller
      * Display a listing of the resource.
      *
      * @param Request $request
-     * @return JsonResponse
+     * @return AnonymousResourceCollection
      */
-    public function index(Request $request): JsonResponse
+    public function index(Request $request): AnonymousResourceCollection
     {
-        $profiler = profilerAcademic::with('profilerInfos');
         $query = profilerAcademic::query();
         $size = $request->query('size');
         $academics = $query->get();
         if ($size) {
             $academics = $query->paginate($size);
         }
-        return profilerAcademicResource::collection($profiler->paginate(7))->response();
+        return profilerAcademicResource::collection($academics);
     }
 
     /**

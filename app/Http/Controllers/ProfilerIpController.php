@@ -59,7 +59,7 @@ class ProfilerIpController extends Controller
         if (!$ip) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profilerIpResource($ip);
+        return profilerIpResource::make($ip);
     }
 
     /**

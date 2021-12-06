@@ -59,7 +59,7 @@ class ProfilerProjectController extends Controller
         if (!$project) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profilerProjectResource($project);
+        return profilerProjectResource::make($project);
     }
 
     /**

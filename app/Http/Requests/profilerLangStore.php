@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\profilerInfoIDRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class profilerLangStore extends FormRequest
@@ -25,7 +26,7 @@ class profilerLangStore extends FormRequest
     {
         return [
             'language' => 'required|string|max:50|min:2',
-            'profiler_infos_id' => 'required',
+            'profiler_infos_id' => ['required', 'int', new profilerInfoIDRule(),],
             'language_level' => 'required|int|max:10|min:1',
         ];
     }

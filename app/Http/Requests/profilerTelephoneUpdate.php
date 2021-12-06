@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\profilerInfoIDRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class profilerTelephoneUpdate extends FormRequest
@@ -26,7 +27,7 @@ class profilerTelephoneUpdate extends FormRequest
         $id = $this->profiler_telephone;
         return [
             'profiler_phone_number' => 'required|string|max:25|min:2' . $id,
-            'profiler_infos_id' => 'required',
+            'profiler_infos_id' => ['required', 'int', new profilerInfoIDRule(),],
             'phone_number_description' => 'required|string|max:300|min:2',
         ];
     }

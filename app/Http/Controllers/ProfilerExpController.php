@@ -59,7 +59,7 @@ class ProfilerExpController extends Controller
         if (!$exp) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profilerExpResource($exp);
+        return profilerExpResource::make($exp);
     }
 
     /**

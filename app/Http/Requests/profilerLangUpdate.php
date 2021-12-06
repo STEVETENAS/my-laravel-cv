@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\profilerInfoIDRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class profilerLangUpdate extends FormRequest
@@ -26,7 +27,7 @@ class profilerLangUpdate extends FormRequest
         $id = $this->profiler_lang;
         return [
             'language' => 'required|string|max:50|min:2' . $id,
-            'profiler_infos_id' => 'required',
+            'profiler_infos_id' => ['required', 'int', new profilerInfoIDRule(),],
             'language_level' => 'required|int|max:10|min:1',
         ];
     }

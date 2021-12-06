@@ -59,7 +59,7 @@ class ProfilerTelephoneController extends Controller
         if (!$telephone) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profilerTelephoneResource($telephone);
+        return profilerTelephoneResource::make($telephone);
     }
 
     /**

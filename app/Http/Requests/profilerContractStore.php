@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\profilerInfoIDRule;
 use Illuminate\Foundation\Http\FormRequest;
 use JetBrains\PhpStorm\ArrayShape;
 
@@ -27,7 +28,7 @@ class profilerContractStore extends FormRequest
     {
         return [
             'contract_type' => 'required|string|max:50|min:2',
-            'profiler_infos_id' => 'required',
+            'profiler_infos_id' => ['required', 'int', new profilerInfoIDRule(),],
             'contract_description' => 'required|string|max:300|min:5',
         ];
     }

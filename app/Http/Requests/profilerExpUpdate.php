@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\profilerInfoIDRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class profilerExpUpdate extends FormRequest
@@ -30,7 +31,7 @@ class profilerExpUpdate extends FormRequest
             'company_website' => 'required|string|max:200|min:2',
             'job_start_date' => 'required',
             'job_end_date' => 'required|after:job_start_date',
-            'profiler_infos_id' => 'required',
+            'profiler_infos_id' => ['required', 'int', new profilerInfoIDRule(),],
             'job_description' => 'required|string|max:300|min:5',
         ];
     }

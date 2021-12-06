@@ -59,7 +59,7 @@ class ProfilerSkillController extends Controller
         if (!$skill) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profilerSkillResource($skill);
+        return profilerSkillResource::make($skill);
     }
 
     /**

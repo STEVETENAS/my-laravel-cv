@@ -59,7 +59,7 @@ class ProfilerResidentController extends Controller
         if (!$resident) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profilerResidentResource($resident);
+        return profilerResidentResource::make($resident);
     }
 
     /**

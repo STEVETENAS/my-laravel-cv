@@ -59,7 +59,7 @@ class ProfilerLangController extends Controller
         if (!$lang) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profilerLangResource($lang);
+        return profilerLangResource::make($lang);
     }
 
     /**

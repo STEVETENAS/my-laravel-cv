@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\profilerInfoIDRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class profilerResidentUpdate extends FormRequest
@@ -26,7 +27,7 @@ class profilerResidentUpdate extends FormRequest
         $id = $this->profiler_resident;
         return [
             'place_of_residence' => 'required|string|max:50|min:2' . $id,
-            'profiler_infos_id' => 'required',
+            'profiler_infos_id' => ['required', 'int', new profilerInfoIDRule(),],
             'city_of_residence' => 'required|string|max:50|min:2',
             'country_of_residence' => 'required|string|max:50|min:2',
             'residence_longitude' => 'required|double',

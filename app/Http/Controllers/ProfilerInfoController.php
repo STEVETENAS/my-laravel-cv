@@ -59,7 +59,7 @@ class ProfilerInfoController extends Controller
         if (!$info) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profilerInfoResource($info);
+        return profilerInfoResource::make($info);
     }
 
     /**
