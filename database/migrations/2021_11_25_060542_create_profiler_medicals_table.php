@@ -17,7 +17,7 @@ class CreateProfilerMedicalsTable extends Migration
             $table->id();
             $table->mediumText('medical_status');
             $table->Text('medical_description');
-            $table->foreignId("profiler_infos_id");
+            $table->foreignId('profiler_infos_id');
             $table->timestampTz('deleted_at')->nullable();
             $table->timestampsTz();
         });

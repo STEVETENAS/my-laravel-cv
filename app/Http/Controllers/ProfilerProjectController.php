@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\profiler_projectStore;
-use App\Http\Requests\profiler_projectUpdate;
-use App\Http\Resources\profiler_projectResource;
-use App\Models\profiler_project;
+use App\Http\Requests\profilerProjectStore;
+use App\Http\Requests\profilerProjectUpdate;
+use App\Http\Resources\profilerProjectResource;
+use App\Models\profilerProject;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -22,27 +22,27 @@ class ProfilerProjectController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $query = profiler_project::query();
+        $query = profilerProject::query();
         $size = $request->query('size');
         $projects = $query->get();
         if ($size) {
             $projects = $query->paginate($size);
         }
-        return profiler_projectResource::collection($projects);
+        return profilerProjectResource::collection($projects);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param profiler_projectStore $request
-     * @return profiler_projectResource
+     * @param profilerProjectStore $request
+     * @return profilerProjectResource
      * @throws Exception
      */
-    public function store(profiler_projectStore $request): profiler_projectResource
+    public function store(profilerProjectStore $request): profilerProjectResource
     {
-        $project = profiler_project::create($request->all());
+        $project = profilerProject::create($request->all());
         if ($project) {
-            return new profiler_projectResource($project);
+            return new profilerProjectResource($project);
         }
         throw new Exception('Unexpected Error');
     }
@@ -51,31 +51,31 @@ class ProfilerProjectController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return JsonResponse|profiler_projectResource
+     * @return JsonResponse|profilerProjectResource
      */
-    public function show($id): JsonResponse|profiler_projectResource
+    public function show($id): JsonResponse|profilerProjectResource
     {
-        $project = profiler_project::find($id);
+        $project = profilerProject::find($id);
         if (!$project) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profiler_projectResource($project);
+        return new profilerProjectResource($project);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param profiler_projectUpdate $request
+     * @param profilerProjectUpdate $request
      * @param int $id
-     * @return profiler_projectResource
+     * @return profilerProjectResource
      * @throws Exception
      */
-    public function update(profiler_projectUpdate $request, $id): profiler_projectResource
+    public function update(profilerProjectUpdate $request, $id): profilerProjectResource
     {
-        $project = profiler_project::find($id);
+        $project = profilerProject::find($id);
         if ($project->update($request->all())) {
             $project->flash();
-            return new profiler_projectResource($project);
+            return new profilerProjectResource($project);
         }
         throw new Exception('Unexpected Error');
     }
@@ -90,7 +90,7 @@ class ProfilerProjectController extends Controller
     #[ArrayShape(['data' => "mixed"])]
     public function destroy($id): array
     {
-        $project = profiler_project::find($id);
+        $project = profilerProject::find($id);
         if ($project->delete()) {
             return ['data' => $project->id];
         }

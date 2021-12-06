@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\profiler_emailStore;
-use App\Http\Requests\profiler_emailUpdate;
-use App\Http\Resources\profiler_emailResource;
-use App\Models\profiler_email;
+use App\Http\Requests\profilerEmailStore;
+use App\Http\Requests\profilerEmailUpdate;
+use App\Http\Resources\profilerEmailResource;
+use App\Models\profilerEmail;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -23,27 +23,27 @@ class ProfilerEmailController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $query = profiler_email::query();
+        $query = profilerEmail::query();
         $size = $request->query('size');
         $emails = $query->get();
         if ($size) {
             $emails = $query->paginate($size);
         }
-        return profiler_emailResource::collection($emails);
+        return profilerEmailResource::collection($emails);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param profiler_emailStore $request
-     * @return profiler_emailResource|Response
+     * @param profilerEmailStore $request
+     * @return profilerEmailResource|Response
      * @throws Exception
      */
-    public function store(profiler_emailStore $request): profiler_emailResource|Response
+    public function store(profilerEmailStore $request): profilerEmailResource|Response
     {
-        $email = profiler_email::create($request->all());
+        $email = profilerEmail::create($request->all());
         if ($email) {
-            return new profiler_emailResource($email);
+            return new profilerEmailResource($email);
         }
         throw new Exception('Unexpected Error');
     }
@@ -52,31 +52,31 @@ class ProfilerEmailController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return JsonResponse|profiler_emailResource
+     * @return JsonResponse|profilerEmailResource
      */
-    public function show($id): JsonResponse|profiler_emailResource
+    public function show($id): JsonResponse|profilerEmailResource
     {
-        $email = profiler_email::find($id);
+        $email = profilerEmail::find($id);
         if (!$email) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profiler_emailResource($email);
+        return new profilerEmailResource($email);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param profiler_emailUpdate $request
+     * @param profilerEmailUpdate $request
      * @param int $id
-     * @return profiler_emailResource
+     * @return profilerEmailResource
      * @throws Exception
      */
-    public function update(profiler_emailUpdate $request, $id): profiler_emailResource
+    public function update(profilerEmailUpdate $request, $id): profilerEmailResource
     {
-        $email = profiler_email::find($id);
+        $email = profilerEmail::find($id);
         if ($email->update($request->all())) {
             $email->flash();
-            return new profiler_emailResource($email);
+            return new profilerEmailResource($email);
         }
         throw new Exception('Unexpected Error');
     }
@@ -91,7 +91,7 @@ class ProfilerEmailController extends Controller
     #[ArrayShape(['data' => "mixed"])]
     public function destroy($id): array
     {
-        $email = profiler_email::find($id);
+        $email = profilerEmail::find($id);
         if ($email->delete()) {
             return ['data' => $email->id];
         }

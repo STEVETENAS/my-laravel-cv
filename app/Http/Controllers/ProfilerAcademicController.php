@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\profiler_academicStore;
-use App\Http\Requests\profiler_academicUpdate;
-use App\Http\Resources\profiler_academicResource;
-use App\Models\profiler_academic;
+use App\Http\Requests\profilerAcademicStore;
+use App\Http\Requests\profilerAcademicUpdate;
+use App\Http\Resources\profilerAcademicResource;
+use App\Models\profilerAcademic;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -22,27 +22,27 @@ class ProfilerAcademicController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $query = profiler_academic::query();
+        $query = profilerAcademic::query();
         $size = $request->query('size');
         $academics = $query->get();
         if ($size) {
             $academics = $query->paginate($size);
         }
-        return profiler_academicResource::collection($academics);
+        return profilerAcademicResource::collection($academics);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param profiler_academicStore $request
-     * @return profiler_academicResource
+     * @param profilerAcademicStore $request
+     * @return profilerAcademicResource
      * @throws Exception
      */
-    public function store(profiler_academicStore $request): profiler_academicResource
+    public function store(profilerAcademicStore $request): profilerAcademicResource
     {
-        $academic = profiler_academic::create($request->all());
+        $academic = profilerAcademic::create($request->all());
         if ($academic) {
-            return new profiler_academicResource($academic);
+            return new profilerAcademicResource($academic);
         }
         throw new Exception('Unexpected Error');
     }
@@ -51,31 +51,31 @@ class ProfilerAcademicController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return JsonResponse|profiler_academicResource
+     * @return JsonResponse|profilerAcademicResource
      */
-    public function show($id): JsonResponse|profiler_academicResource
+    public function show($id): JsonResponse|profilerAcademicResource
     {
-        $academic = profiler_academic::find($id);
+        $academic = profilerAcademic::find($id);
         if (!$academic) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profiler_academicResource($academic);
+        return new profilerAcademicResource($academic);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param profiler_academicUpdate $request
+     * @param profilerAcademicUpdate $request
      * @param int $id
-     * @return profiler_academicResource
+     * @return profilerAcademicResource
      * @throws Exception
      */
-    public function update(profiler_academicUpdate $request, $id): profiler_academicResource
+    public function update(profilerAcademicUpdate $request, $id): profilerAcademicResource
     {
-        $academic = profiler_academic::find($id);
+        $academic = profilerAcademic::find($id);
         if ($academic->update($request->all())) {
             $academic->flash();
-            return new profiler_academicResource($academic);
+            return new profilerAcademicResource($academic);
         }
         throw new Exception('Unexpected Error');
     }
@@ -90,7 +90,7 @@ class ProfilerAcademicController extends Controller
     #[ArrayShape(['data' => "mixed"])]
     public function destroy($id): array
     {
-        $academic = profiler_academic::find($id);
+        $academic = profilerAcademic::find($id);
         if ($academic->delete()) {
             return ['data' => $academic->id];
         }

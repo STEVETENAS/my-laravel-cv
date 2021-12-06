@@ -21,7 +21,7 @@ class CreateProfilerExpsTable extends Migration
             $table->mediumText('company_website')->nullable();
             $table->date('job_start_date');
             $table->date('job_end_date')->nullable();
-            $table->foreignId("profiler_infos_id");
+            $table->foreignId('profiler_infos_id');
             $table->timestampTz('deleted_at')->nullable();
             $table->timestampsTz();
         });

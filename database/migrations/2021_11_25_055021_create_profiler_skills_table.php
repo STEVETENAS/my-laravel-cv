@@ -18,7 +18,7 @@ class CreateProfilerSkillsTable extends Migration
             $table->tinyText('skill_title');
             $table->tinyInteger('skill_level');
             $table->mediumText('skill_description');
-            $table->foreignId("profiler_infos_id");
+            $table->foreignId('profiler_infos_id');
             $table->timestampTz('deleted_at')->nullable();
             $table->timestampsTz();
         });
@@ -31,6 +31,6 @@ class CreateProfilerSkillsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profiler_skill');
+        Schema::dropIfExists('profiler_skills');
     }
 }

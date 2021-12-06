@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\profiler_telephoneStore;
-use App\Http\Requests\profiler_telephoneUpdate;
-use App\Http\Resources\profiler_telephoneResource;
-use App\Models\profiler_telephone;
+use App\Http\Requests\profilerTelephoneStore;
+use App\Http\Requests\profilerTelephoneUpdate;
+use App\Http\Resources\profilerTelephoneResource;
+use App\Models\profilerTelephone;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -22,27 +22,27 @@ class ProfilerTelephoneController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $query = profiler_telephone::query();
+        $query = profilerTelephone::query();
         $size = $request->query('size');
         $telephones = $query->get();
         if ($size) {
             $telephones = $query->paginate($size);
         }
-        return profiler_telephoneResource::collection($telephones);
+        return profilerTelephoneResource::collection($telephones);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param profiler_telephoneStore $request
-     * @return profiler_telephoneResource
+     * @param profilerTelephoneStore $request
+     * @return profilerTelephoneResource
      * @throws Exception
      */
-    public function store(profiler_telephoneStore $request): profiler_telephoneResource
+    public function store(profilerTelephoneStore $request): profilerTelephoneResource
     {
-        $telephone = profiler_telephone::create($request->all());
+        $telephone = profilerTelephone::create($request->all());
         if ($telephone) {
-            return new profiler_telephoneResource($telephone);
+            return new profilerTelephoneResource($telephone);
         }
         throw new Exception('Unexpected Error');
     }
@@ -51,31 +51,31 @@ class ProfilerTelephoneController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return JsonResponse|profiler_telephoneResource
+     * @return JsonResponse|profilerTelephoneResource
      */
-    public function show($id): JsonResponse|profiler_telephoneResource
+    public function show($id): JsonResponse|profilerTelephoneResource
     {
-        $telephone = profiler_telephone::find($id);
+        $telephone = profilerTelephone::find($id);
         if (!$telephone) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profiler_telephoneResource($telephone);
+        return new profilerTelephoneResource($telephone);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param profiler_telephoneUpdate $request
+     * @param profilerTelephoneUpdate $request
      * @param int $id
-     * @return profiler_telephoneResource
+     * @return profilerTelephoneResource
      * @throws Exception
      */
-    public function update(profiler_telephoneUpdate $request, $id): profiler_telephoneResource
+    public function update(profilerTelephoneUpdate $request, $id): profilerTelephoneResource
     {
-        $telephone = profiler_telephone::find($id);
+        $telephone = profilerTelephone::find($id);
         if ($telephone->update($request->all())) {
             $telephone->flash();
-            return new profiler_telephoneResource($telephone);
+            return new profilerTelephoneResource($telephone);
         }
         throw new Exception('Unexpected Error');
     }
@@ -90,7 +90,7 @@ class ProfilerTelephoneController extends Controller
     #[ArrayShape(['data' => "mixed"])]
     public function destroy($id): array
     {
-        $telephone = profiler_telephone::find($id);
+        $telephone = profilerTelephone::find($id);
         if ($telephone->delete()) {
             return ['data' => $telephone->id];
         }

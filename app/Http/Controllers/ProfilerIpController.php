@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\profiler_ipStore;
-use App\Http\Requests\profiler_ipUpdate;
-use App\Http\Resources\profiler_ipResource;
-use App\Models\profiler_ip;
+use App\Http\Requests\profilerIpStore;
+use App\Http\Requests\profilerIpUpdate;
+use App\Http\Resources\profilerIpResource;
+use App\Models\profilerIp;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -22,27 +22,27 @@ class ProfilerIpController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $query = profiler_ip::query();
+        $query = profilerIp::query();
         $size = $request->query('size');
         $ips = $query->get();
         if ($size) {
             $ips = $query->paginate($size);
         }
-        return profiler_ipResource::collection($ips);
+        return profilerIpResource::collection($ips);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param profiler_ipStore $request
-     * @return profiler_ipResource
+     * @param profilerIpStore $request
+     * @return profilerIpResource
      * @throws Exception
      */
-    public function store(profiler_ipStore $request): profiler_ipResource
+    public function store(profilerIpStore $request): profilerIpResource
     {
-        $ip = profiler_ip::create($request->all());
+        $ip = profilerIp::create($request->all());
         if ($ip) {
-            return new profiler_ipResource($ip);
+            return new profilerIpResource($ip);
         }
         throw new Exception('Unexpected Error');
     }
@@ -51,31 +51,31 @@ class ProfilerIpController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return JsonResponse|profiler_ipResource
+     * @return JsonResponse|profilerIpResource
      */
-    public function show($id): JsonResponse|profiler_ipResource
+    public function show($id): JsonResponse|profilerIpResource
     {
-        $ip = profiler_ip::find($id);
+        $ip = profilerIp::find($id);
         if (!$ip) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profiler_ipResource($ip);
+        return new profilerIpResource($ip);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param profiler_ipUpdate $request
+     * @param profilerIpUpdate $request
      * @param int $id
-     * @return profiler_ipResource
+     * @return profilerIpResource
      * @throws Exception
      */
-    public function update(profiler_ipUpdate $request, $id): profiler_ipResource
+    public function update(profilerIpUpdate $request, $id): profilerIpResource
     {
-        $ip = profiler_ip::find($id);
+        $ip = profilerIp::find($id);
         if ($ip->update($request->all())) {
             $ip->flash();
-            return new profiler_ipResource($ip);
+            return new profilerIpResource($ip);
         }
         throw new Exception('Unexpected Error');
     }
@@ -90,7 +90,7 @@ class ProfilerIpController extends Controller
     #[ArrayShape(['data' => "mixed"])]
     public function destroy($id): array
     {
-        $ip = profiler_ip::find($id);
+        $ip = profilerIp::find($id);
         if ($ip->delete()) {
             return ['data' => $ip->id];
         }

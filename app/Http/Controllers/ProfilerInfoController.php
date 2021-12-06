@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\profiler_infoStore;
-use App\Http\Requests\profiler_infoUpdate;
-use App\Http\Resources\profiler_infoResource;
-use App\Models\profiler_info;
+use App\Http\Requests\profilerInfoStore;
+use App\Http\Requests\profilerInfoUpdate;
+use App\Http\Resources\profilerInfoResource;
+use App\Models\profilerInfo;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -22,27 +22,27 @@ class ProfilerInfoController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $query = profiler_info::query();
+        $query = profilerInfo::query();
         $size = $request->query('size');
         $infos = $query->get();
         if ($size) {
             $infos = $query->paginate($size);
         }
-        return profiler_infoResource::collection($infos);
+        return profilerInfoResource::collection($infos);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param profiler_infoStore $request
-     * @return profiler_infoResource
+     * @param profilerInfoStore $request
+     * @return profilerInfoResource
      * @throws Exception
      */
-    public function store(profiler_infoStore $request): profiler_infoResource
+    public function store(profilerInfoStore $request): profilerInfoResource
     {
-        $info = profiler_info::create($request->all());
+        $info = profilerInfo::create($request->all());
         if ($info) {
-            return new profiler_infoResource($info);
+            return new profilerInfoResource($info);
         }
         throw new Exception('Unexpected Error');
     }
@@ -51,31 +51,31 @@ class ProfilerInfoController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return JsonResponse|profiler_infoResource
+     * @return JsonResponse|profilerInfoResource
      */
-    public function show($id): JsonResponse|profiler_infoResource
+    public function show($id): JsonResponse|profilerInfoResource
     {
-        $info = profiler_info::find($id);
+        $info = profilerInfo::find($id);
         if (!$info) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profiler_infoResource($info);
+        return new profilerInfoResource($info);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param profiler_infoUpdate $request
+     * @param profilerInfoUpdate $request
      * @param int $id
-     * @return profiler_infoResource
+     * @return profilerInfoResource
      * @throws Exception
      */
-    public function update(profiler_infoUpdate $request, $id): profiler_infoResource
+    public function update(profilerInfoUpdate $request, $id): profilerInfoResource
     {
-        $info = profiler_info::find($id);
+        $info = profilerInfo::find($id);
         if ($info->update($request->all())) {
             $info->flash();
-            return new profiler_infoResource($info);
+            return new profilerInfoResource($info);
         }
         throw new Exception('Unexpected Error');
     }
@@ -90,7 +90,7 @@ class ProfilerInfoController extends Controller
     #[ArrayShape(['data' => "mixed"])]
     public function destroy($id): array
     {
-        $info = profiler_info::find($id);
+        $info = profilerInfo::find($id);
         if ($info->delete()) {
             return ['data' => $info->id];
         }

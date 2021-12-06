@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\profiler_expStore;
-use App\Http\Requests\profiler_expUpdate;
-use App\Http\Resources\profiler_expResource;
-use App\Models\profiler_exp;
+use App\Http\Requests\profilerExpStore;
+use App\Http\Requests\profilerExpUpdate;
+use App\Http\Resources\profilerExpResource;
+use App\Models\profilerExp;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -22,27 +22,27 @@ class ProfilerExpController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $query = profiler_exp::query();
+        $query = profilerExp::query();
         $size = $request->query('size');
         $exps = $query->get();
         if ($size) {
             $exps = $query->paginate($size);
         }
-        return profiler_expResource::collection($exps);
+        return profilerExpResource::collection($exps);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param profiler_expStore $request
-     * @return profiler_expResource
+     * @param profilerExpStore $request
+     * @return profilerExpResource
      * @throws Exception
      */
-    public function store(profiler_expStore $request): profiler_expResource
+    public function store(profilerExpStore $request): profilerExpResource
     {
-        $exp = profiler_exp::create($request->all());
+        $exp = profilerExp::create($request->all());
         if ($exp) {
-            return new profiler_expResource($exp);
+            return new profilerExpResource($exp);
         }
         throw new Exception('Unexpected Error');
     }
@@ -51,31 +51,31 @@ class ProfilerExpController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return JsonResponse|profiler_expResource
+     * @return JsonResponse|profilerExpResource
      */
-    public function show($id): JsonResponse|profiler_expResource
+    public function show($id): JsonResponse|profilerExpResource
     {
-        $exp = profiler_exp::find($id);
+        $exp = profilerExp::find($id);
         if (!$exp) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profiler_expResource($exp);
+        return new profilerExpResource($exp);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param profiler_expUpdate $request
+     * @param profilerExpUpdate $request
      * @param int $id
-     * @return profiler_expResource
+     * @return profilerExpResource
      * @throws Exception
      */
-    public function update(profiler_expUpdate $request, $id): profiler_expResource
+    public function update(profilerExpUpdate $request, $id): profilerExpResource
     {
-        $exp = profiler_exp::find($id);
+        $exp = profilerExp::find($id);
         if ($exp->update($request->all())) {
             $exp->flash();
-            return new profiler_expResource($exp);
+            return new profilerExpResource($exp);
         }
         throw new Exception('Unexpected Error');
     }
@@ -90,7 +90,7 @@ class ProfilerExpController extends Controller
     #[ArrayShape(['data' => "mixed"])]
     public function destroy($id): array
     {
-        $exp = profiler_exp::find($id);
+        $exp = profilerExp::find($id);
         if ($exp->delete()) {
             return ['data' => $exp->id];
         }

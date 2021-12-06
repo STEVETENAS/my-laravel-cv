@@ -17,7 +17,7 @@ class CreateProfilerContractsTable extends Migration
             $table->id();
             $table->mediumText('contract_type');
             $table->mediumText('contract_description');
-            $table->foreignId("profiler_infos_id");
+            $table->foreignId('profiler_infos_id');
             $table->timestampTz('deleted_at')->nullable();
             $table->timestampsTz();
         });

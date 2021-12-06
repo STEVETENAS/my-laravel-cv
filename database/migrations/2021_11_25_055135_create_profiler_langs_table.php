@@ -17,7 +17,7 @@ class CreateProfilerLangsTable extends Migration
             $table->id();
             $table->tinyText('language');
             $table->unsignedTinyInteger('language_level');
-            $table->foreignId("profiler_infos_id");
+            $table->foreignId('profiler_infos_id');
             $table->timestampTz('deleted_at')->nullable();
             $table->timestamps();
         });

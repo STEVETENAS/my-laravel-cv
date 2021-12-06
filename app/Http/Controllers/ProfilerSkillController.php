@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\profiler_skillStore;
-use App\Http\Requests\profiler_skillUpdate;
-use App\Http\Resources\profiler_skillResource;
-use App\Models\profiler_skill;
+use App\Http\Requests\profilerSkillStore;
+use App\Http\Requests\profilerSkillUpdate;
+use App\Http\Resources\profilerSkillResource;
+use App\Models\profilerSkill;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -22,27 +22,27 @@ class ProfilerSkillController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $query = profiler_skill::query();
+        $query = profilerSkill::query();
         $size = $request->query('size');
         $skills = $query->get();
         if ($size) {
             $skills = $query->paginate($size);
         }
-        return profiler_skillResource::collection($skills);
+        return profilerSkillResource::collection($skills);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param profiler_skillStore $request
-     * @return profiler_skillResource
+     * @param profilerSkillStore $request
+     * @return profilerSkillResource
      * @throws Exception
      */
-    public function store(Request $request): profiler_skillResource
+    public function store(Request $request): profilerSkillResource
     {
-        $skill = profiler_skill::create($request->all());
+        $skill = profilerSkill::create($request->all());
         if ($skill) {
-            return new profiler_skillResource($skill);
+            return new profilerSkillResource($skill);
         }
         throw new Exception('Unexpected Error');
     }
@@ -51,31 +51,31 @@ class ProfilerSkillController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return JsonResponse|profiler_skillResource
+     * @return JsonResponse|profilerSkillResource
      */
-    public function show($id): JsonResponse|profiler_skillResource
+    public function show($id): JsonResponse|profilerSkillResource
     {
-        $skill = profiler_skill::find($id);
+        $skill = profilerSkill::find($id);
         if (!$skill) {
             return response()->json(['error' => 'Unrecognised ID'], 400);
         }
-        return new profiler_skillResource($skill);
+        return new profilerSkillResource($skill);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param profiler_skillUpdate $request
+     * @param profilerSkillUpdate $request
      * @param int $id
-     * @return profiler_skillResource
+     * @return profilerSkillResource
      * @throws Exception
      */
-    public function update(profiler_skillUpdate $request, $id): profiler_skillResource
+    public function update(profilerSkillUpdate $request, $id): profilerSkillResource
     {
-        $skill = profiler_skill::find($id);
+        $skill = profilerSkill::find($id);
         if ($skill->update($request->all())) {
             $skill->flash();
-            return new profiler_skillResource($skill);
+            return new profilerSkillResource($skill);
         }
         throw new Exception('Unexpected Error');
     }
@@ -90,7 +90,7 @@ class ProfilerSkillController extends Controller
     #[ArrayShape(['data' => "mixed"])]
     public function destroy($id): array
     {
-        $skill = profiler_skill::find($id);
+        $skill = profilerSkill::find($id);
         if ($skill->delete()) {
             return ['data' => $skill->id];
         }

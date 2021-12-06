@@ -17,7 +17,7 @@ class CreateProfilerProjectsTable extends Migration
             $table->id();
             $table->mediumText('project_name');
             $table->mediumText('project_description');
-            $table->foreignId("profiler_infos_id");
+            $table->foreignId('profiler_infos_id');
             $table->timestampTz('deleted_at')->nullable();
             $table->timestampsTz();
         });
