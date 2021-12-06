@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
 
-class profiler_langFactory extends Factory
+class profilerResidentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,11 @@ class profiler_langFactory extends Factory
         $profilerIDs = DB::table('profiler_infos')->pluck('id')->toArray();
 
         return [
-            'language' => $this->faker->languageCode,
-            'language_level' => $this->faker->numberBetween(1, 10),
+            'place_of_residence' => $this->faker->streetName,
+            'city_of_residence' => $this->faker->city,
+            'country_of_residence' => $this->faker->country,
+            'residence_longitude' => $this->faker->longitude,
+            'residence_latitude' => $this->faker->latitude,
             'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }

@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
 
-class profiler_telephoneFactory extends Factory
+class profilerAcademicFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,9 @@ class profiler_telephoneFactory extends Factory
         $profilerIDs = DB::table('profiler_infos')->pluck('id')->toArray();
 
         return [
-            'profiler_phone_number' => $this->faker->phoneNumber,
-            'phone_number_description' => $this->faker->realText(100),
+            'diploma_title' => $this->faker->name,
+            'diploma_description' => $this->faker->text(100),
+            'institution_attended' => $this->faker->name,
             'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }

@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
 
-class profiler_residentFactory extends Factory
+class profilerContractFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,13 +15,11 @@ class profiler_residentFactory extends Factory
     public function definition(): array
     {
         $profilerIDs = DB::table('profiler_infos')->pluck('id')->toArray();
+        $contract_type = ['long-term', 'short-term'];
 
         return [
-            'place_of_residence' => $this->faker->streetName,
-            'city_of_residence' => $this->faker->city,
-            'country_of_residence' => $this->faker->country,
-            'residence_longitude' => $this->faker->longitude,
-            'residence_latitude' => $this->faker->latitude,
+            'contract_type' => $this->faker->randomElement($contract_type),
+            'contract_description' => $this->faker->realText(300),
             'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }

@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class profiler_infoFactory extends Factory
+class profilerInfoFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class profiler_infoFactory extends Factory
 
         return [
             'first_name' => $this->faker->firstName($gender),
-            'last_name' => $this->faker->lastName($gender),
+            'last_name' => $this->faker->lastName,
             'gender' => $gender,
             'place_of_birth' => $this->faker->city,
             'date_of_birth' => $this->faker->date,

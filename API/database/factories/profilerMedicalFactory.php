@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
 
-class profiler_ipFactory extends Factory
+class profilerMedicalFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,8 @@ class profiler_ipFactory extends Factory
         $profilerIDs = DB::table('profiler_infos')->pluck('id')->toArray();
 
         return [
-            'ip_name' => $this->faker->sentence,
-            'ip_description' => $this->faker->realText(300),
-            'ip_img' => $this->faker->image('public/storage/images/ip_image', 640, 480, null, false),
+            'medical_status' => $this->faker->name,
+            'medical_description' => $this->faker->realText(300),
             'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }

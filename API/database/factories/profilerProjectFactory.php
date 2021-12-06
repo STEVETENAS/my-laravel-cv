@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
 
-class profiler_projectFactory extends Factory
+class profilerProjectFactory extends Factory
 {
     /**
      * Define the model's default state.

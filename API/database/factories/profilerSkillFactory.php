@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
 
-class profiler_medicalFactory extends Factory
+class profilerSkillFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,9 @@ class profiler_medicalFactory extends Factory
         $profilerIDs = DB::table('profiler_infos')->pluck('id')->toArray();
 
         return [
-            'medical_status' => $this->faker->name,
-            'medical_description' => $this->faker->realText(300),
+            'skill_title' => $this->faker->name,
+            'skill_level' => $this->faker->numberBetween(50, 100),
+            'skill_description' => $this->faker->realText(300),
             'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }
