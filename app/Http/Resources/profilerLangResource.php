@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Models\profilerInfo;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -20,7 +19,7 @@ class profilerLangResource extends JsonResource
             'id' => $this->id,
             'language' => $this->language,
             'language_level' => $this->language_level,
-            'profiler_info' => profilerInfo::query()->where('id', '=', $this->profiler_infos_id)->get(),
+            'profiler_info' => profilerInfoResource::make($this->profilerInfos),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

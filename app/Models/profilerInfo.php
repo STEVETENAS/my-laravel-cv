@@ -11,6 +11,8 @@ class profilerInfo extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'profiler_infos';
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -25,66 +27,64 @@ class profilerInfo extends Model
         'background_image',
     ];
 
-//    protected $dateFormat = 'U';
-
     protected $casts = [
         'created_at' => 'datetime:U',
         'updated_at' => 'datetime:U',
         'deleted_at' => 'datetime:U',
     ];
 
-    public function profiler_academics(): HasMany
+    public function ProfilerAcademic(): HasMany
     {
-        return $this->hasMany(profilerAcademic::class, 'profiler_infos_id');
+        return $this->hasMany(profilerAcademic::class);
     }
 
-    public function profiler_contracts(): HasMany
+    public function profilerContracts(): HasMany
     {
-        return $this->hasMany(profilerContract::class, 'profiler_infos_id');
+        return $this->hasMany(profilerContract::class);
     }
 
     public function profiler_emails(): HasMany
     {
-        return $this->hasMany(profilerEmail::class, 'profiler_infos_id');
+        return $this->hasMany(profilerEmail::class);
     }
 
     public function profiler_exps(): HasMany
     {
-        return $this->hasMany(profilerExp::class, 'profiler_infos_id');
+        return $this->hasMany(profilerExp::class);
     }
 
     public function profiler_ips(): HasMany
     {
-        return $this->hasMany(profilerIp::class, 'profiler_infos_id');
+        return $this->hasMany(profilerIp::class);
     }
 
     public function profiler_langs(): HasMany
     {
-        return $this->hasMany(profilerLang::class, 'profiler_infos_id');
+        return $this->hasMany(profilerLang::class);
     }
 
     public function profiler_medicals(): HasMany
     {
-        return $this->hasMany(profilerMedical::class, 'profiler_infos_id');
+        return $this->hasMany(profilerMedical::class);
     }
 
     public function profiler_projects(): HasMany
     {
-        return $this->hasMany(profilerProject::class, 'profiler_infos_id');
+        return $this->hasMany(profilerProject::class);
     }
 
     public function profiler_residents(): HasMany
     {
-        return $this->hasMany(profilerResident::class, 'profiler_infos_id');
+        return $this->hasMany(profilerResident::class);
     }
 
     public function profiler_skills(): HasMany
     {
-        return $this->hasMany(profilerSkill::class, 'profiler_infos_id');
+        return $this->hasMany(profilerSkill::class);
     }
 
     public function profiler_telephones(): HasMany
     {
-        return $this->hasMany(profilerTelephone::class, 'profiler_infos_id');
+        return $this->hasMany(profilerTelephone::class);
     }
 }

@@ -11,6 +11,7 @@ class profilerAcademic extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'profiler_academics';
 
     protected $fillable = [
         'diploma_title',
@@ -19,15 +20,14 @@ class profilerAcademic extends Model
         'profiler_infos_id'
     ];
 
-
     protected $casts = [
         'created_at' => 'datetime:U',
         'updated_at' => 'datetime:U',
         'deleted_at' => 'datetime:U',
     ];
 
-    public function profiler_infos(): BelongsTo
+    public function profilerInfos(): BelongsTo
     {
-        return $this->belongsTo(profilerInfo::class, 'profiler_infos_id');
+        return $this->belongsTo(profilerInfo::class);
     }
 }

@@ -11,6 +11,8 @@ class profilerResident extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'profiler_residents';
+
     protected $fillable = [
         'place_of_residence',
         'city_of_residence',
@@ -26,7 +28,7 @@ class profilerResident extends Model
         'deleted_at' => 'datetime:U',
     ];
 
-    public function profiler_infos(): BelongsTo
+    public function profilerInfos(): BelongsTo
     {
         return $this->belongsTo(profilerInfo::class, 'profiler_infos_id');
     }

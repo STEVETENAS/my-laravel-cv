@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Models\profilerInfo;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -23,7 +22,7 @@ class profilerResidentResource extends JsonResource
             'country_of_residence' => $this->country_of_residence,
             'residence_longitude' => $this->residence_longitude,
             'residence_latitude' => $this->residence_latitude,
-            'profiler_info' => profilerInfo::query()->where('id', '=', $this->profiler_infos_id)->get(),
+            'profiler_info' => profilerInfoResource::make($this->profilerInfos),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

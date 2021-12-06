@@ -11,12 +11,13 @@ class profilerEmail extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'profiler_emails';
+
     protected $fillable = [
         'profiler_email',
         'email_description',
         'profiler_infos_id',
     ];
-
 
     protected $casts = [
         'created_at' => 'datetime:U',
@@ -24,7 +25,7 @@ class profilerEmail extends Model
         'deleted_at' => 'datetime:U',
     ];
 
-    public function profiler_infos(): BelongsTo
+    public function profilerInfos(): BelongsTo
     {
         return $this->belongsTo(profilerInfo::class, 'profiler_infos_id');
     }

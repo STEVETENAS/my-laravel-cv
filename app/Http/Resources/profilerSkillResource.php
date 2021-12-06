@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Models\profilerInfo;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -21,7 +20,7 @@ class profilerSkillResource extends JsonResource
             'skill_title' => $this->skill_title,
             'skill_level' => $this->skill_level,
             'skill_description' => $this->skill_description,
-            'profiler_info' => profilerInfo::query()->where('id', '=', $this->profiler_infos_id)->get(),
+            'profiler_info' => profilerInfoResource::make($this->profilerInfos),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

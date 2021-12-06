@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Models\profilerInfo;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -21,7 +20,7 @@ class profilerIpResource extends JsonResource
             'ip_name' => $this->ip_name,
             'ip_description' => $this->ip_description,
             'ip_img' => $this->ip_img,
-            'profiler_info' => profilerInfo::query()->where('id', '=', $this->profiler_infos_id)->get(),
+            'profiler_info' => profilerInfoResource::make($this->profilerInfos),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
