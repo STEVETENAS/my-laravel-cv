@@ -19,7 +19,7 @@ class profiler_academicFactory extends Factory
         return [
             'diploma_title' => $this->faker->name,
             'diploma_description' => $this->faker->text(100),
-            'institution_attended' => $this->faker->name('male'),
+            'institution_attended' => $this->faker->name,
             'profiler_infos_id' => $this->faker->randomElement($profilerIDs),
         ];
     }
